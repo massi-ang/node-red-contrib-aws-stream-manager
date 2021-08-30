@@ -1,0 +1,99 @@
+<!--
+ Copyright 2021 Amazon.com.
+ SPDX-License-Identifier: MIT
+-->
+
+<script type="text/html" data-template-name="stream-config">
+    <style scoped>
+            .hiddenAttrs {display:none;}
+            .visibleAttrs {display:block;}
+    </style>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name"></input>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-streamName"><i class="fa fa-user"></i> Stream name</label>
+        <input type="text" id="node-config-input-streamName">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-exportKinesis"><i class="fa fa-wrench"></i> Export to Kinesis</label>
+        <input type="checkbox" id="node-config-input-exportKinesis">
+       
+    </div>   
+    <div id="kinesisAttr">
+        <div class="form-row" id='kinesisStreamNameAttr' class='hiddenAttrs'>
+            <label for="node-config-input-kinesisStreamName"><i class="fa fa-tag"></i> Kinesis Stream Name</label>
+            <input type="text" id="node-config-input-kinesisStreamName" placeholder="Kinesis Stream Name"></input>
+        </div> 
+    </div>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-strategyOnFull"><i class="fa fa-wrench"></i> StrategyOnFull</label>
+        <select type="text" id="node-config-input-operation">
+            <option value="OverwriteOldestData">Overwrite Oldest Data</option>
+            <option value="RejectNewData">Reject New Data</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-maxSize"><i class="fa fa-user"></i> Max size</label>
+        <input type="text" id="node-config-input-maxSize">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-streamSegmentSize"><i class="fa fa-user"></i> Stream segment size</label>
+        <input type="text" id="node-config-input-streamSegmentSize">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-timeToLiveMillis"><i class="fa fa-user"></i> TTL (ms)</label>
+        <input type="text" id="node-config-input-timeToLiveMillis">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-flushOnWrite"><i class="fa fa-user"></i> Flush On Write</label>
+        <input type="checkbox" id="node-config-input-flushOnWrite">
+    </div>
+    
+<script>
+    $('#node-config-input-exportKinesis').change(function() {
+        if (this.checked) {
+            $('#kinesisAttr').children().addClass('visibleAttrs').removeClass('hiddenAttrs');
+        } else {
+            $('#kinesisAttr').children().addClass('hiddenAttrs').removeClass('visibleAttrs');
+        }
+     });
+</script>
+
+</script>
+
+<script type="text/x-red" data-help-name="stream-config">
+<p>
+stream-config
+</p>
+<p>
+NOTE: Parameters must be specified in the message, using the case specified in the AWS API documentation (normally UpperCaseLeading)..
+</p>
+<h3>References</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Appflow.html">Appflow</a></li>
+</ul>
+</script>
+
+<script type="text/javascript">
+RED.nodes.registerType('stream-config',{
+    category: 'config',
+    color:"#C0DEED",
+    defaults: {
+        streamName: {value:"",required:true},
+        kinesis: { value: false},
+        strategyOnFull: {value: "OverwriteOldestData"},
+        maxSize: {value: ""},
+        streamSegmentSize: {value: ""},
+        flushOnWrite: {value: false},
+        name: { value: "" }
+    },
+    align: "left",
+    label: function() {
+        return this.name || "stream-config"
+    }
+});
+</script>
+

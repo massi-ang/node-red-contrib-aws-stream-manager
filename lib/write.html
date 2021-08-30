@@ -1,0 +1,76 @@
+<!--
+ Copyright 2021 Amazon.com.
+ SPDX-License-Identifier: MIT
+-->
+
+<script type="text/html" data-template-name="stream-write">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name"></input>
+    </div>
+    <div class="form-row">
+        <label for="node-input-stream"><i class="fa fa-wrench"></i> Stream</label>
+        <input type="text" id="node-input-stream">
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="stream-write">
+<p>
+Invokes the SageMaker Edge Manager agent using the model configured and the <code>msg.payload</code> as input.
+Returns a byte array as output.
+</p>
+<h3>Inputs</h3>
+<dl class="message-properties">
+    <dt>payload
+        <span class="property-type">buffer | TypedArray | string </span>
+    </dt>
+    <dd> the data to be written to the stream </dd>
+    </dl>
+<h3>Outputs</h3>
+<p>Done or Error</p>
+<ol class="node-ports">
+    <li>done
+        <dl class="message-properties">
+            <dt>payload <span class="property-type">object</span></dt>
+            <dd>the result of the invocation</dd>
+        </dl>
+        
+    </li>
+    <li>error
+        <dl class="message-properties">
+            <dt>payload <span class="property-type">Error</span></dt>
+            <dd>the error</dd>
+        </dl>
+       
+    </li>
+    
+</ol>
+
+<h3>Details</h3>
+
+<h3>References</h3>
+<ul>
+<li>Stream Manager</li>
+</ul>
+</script>
+
+<script type="text/javascript">
+RED.nodes.registerType('stream-write',{
+    category: 'Stream Manager',
+    color:"#47d147",
+    defaults: {
+        stream: { type: "stream-config", required: true},
+        name: { value: "" }
+    },
+    inputs:1,
+    outputs: 2,
+    outputLabels: ["done", "error"],
+    icon: "",
+    align: "left",
+    label: function() {
+        return this.name;
+    }
+});
+</script>

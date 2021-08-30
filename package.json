@@ -1,0 +1,41 @@
+{
+    "name": "node-red-contrib-aws-stream-manager",
+    "version": "1.0.0",
+    "description": "Nodes to work with Stream Manager in AWS IoT Greengrass",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/massi-ang/node-red-contrib-aws-stream-manager.git"
+    },
+    "keywords": [
+        "streammanager",
+        "stream mananger",
+        "stream",
+        "aws",
+        "greengrass"
+    ],
+    "author": "Massimiliano Angelino",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/massi-ang/node-red-contrib-aws-stream-manager/issues"
+    },
+    "homepage": "https://github.com/massi-ang/node-red-contrib-aws-stream-manager#readme",
+    "dependencies": {
+        "aws-greengrass-stream-manager-sdk": "github:massi-ang/aws-greengrass-stream-manager-sdk-js",
+        "cbor": "^5.2.0"
+    },
+    "bundleDependencies": false,
+    "devDependencies": {},
+    "node-red": {
+        "nodes": {
+            "stream-write": "lib/write.js",
+            "stream-config": "lib/config.js"
+        }
+    }
+}
