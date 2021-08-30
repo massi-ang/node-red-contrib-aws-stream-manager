@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/massi-ang/node-red-contrib-aws-stream-manager#readme",
     "dependencies": {
-        "aws-greengrass-stream-manager-sdk": "github:massi-ang/aws-greengrass-stream-manager-sdk-js",
+        "aws-greengrass-core-sdk": "^1.7.0",
         "cbor": "^5.2.0"
     },
     "bundleDependencies": false,
