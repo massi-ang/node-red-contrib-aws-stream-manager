@@ -95,8 +95,8 @@ RED.nodes.registerType('stream-config',{
         return this.name || "stream-config"
     },
     oneditprepare: function() {
-		$("#node-input-maxSize").typedInput({ default: "num", types: ["num"]});
-        $("#node-input-streamSegmentSize").typedInput({ default: "num", types: ["num"]});
+		$("#node-config-input-maxSize").typedInput({ default: "num", types: ["num"]});
+        $("#node-config-input-streamSegmentSize").typedInput({ default: "num", types: ["num"]});
         if ($('#node-config-input-exportKinesis').val()) {
             $('#kinesisAttr').children().addClass('visibleAttrs').removeClass('hiddenAttrs');
         } else {
