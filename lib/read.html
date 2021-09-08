@@ -65,8 +65,8 @@ RED.nodes.registerType('stream-read',{
         name: { value: "" }
     },
     inputs:1,
-    outputs: 2,
-    outputLabels: ["done", "error"],
+    outputs: 3,
+    outputLabels: ["messages", "lastSequence", "error"],
     icon: "",
     align: "left",
     label: function() {
