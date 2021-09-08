@@ -93,6 +93,15 @@ RED.nodes.registerType('stream-config',{
     align: "left",
     label: function() {
         return this.name || "stream-config"
+    },
+    oneditprepare: function() {
+		$("#node-input-maxSize").typedInput({ default: "num", types: ["num"]});
+        $("#node-input-streamSegmentSize").typedInput({ default: "num", types: ["num"]});
+        if ($('#node-config-input-exportKinesis').val()) {
+            $('#kinesisAttr').children().addClass('visibleAttrs').removeClass('hiddenAttrs');
+        } else {
+            $('#kinesisAttr').children().addClass('hiddenAttrs').removeClass('visibleAttrs');
+        }
     }
 });
 </script>

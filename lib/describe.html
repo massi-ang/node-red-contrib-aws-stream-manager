@@ -3,7 +3,7 @@
  SPDX-License-Identifier: MIT
 -->
 
-<script type="text/html" data-template-name="stream-write">
+<script type="text/html" data-template-name="stream-describe">
 
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
@@ -16,24 +16,21 @@
 
 </script>
 
-<script type="text/html" data-help-name="stream-write">
+<script type="text/html" data-help-name="stream-describe">
 <p>
-Writes the content of the payload to the configured stream. If the stream does not exists it will be created on node creation.
+Gets information about the configured stream
 </p>
 <h3>Inputs</h3>
 <dl class="message-properties">
-    <dt>payload
-        <span class="property-type">buffer | TypedArray | string </span>
-    </dt>
-    <dd> the data to be written to the stream </dd>
-    </dl>
+    any input, not used    
+</dl>
 <h3>Outputs</h3>
-<p>Done or Error</p>
+<p>info or error</p>
 <ol class="node-ports">
-    <li>done
+    <li>info
         <dl class="message-properties">
             <dt>payload <span class="property-type">object</span></dt>
-            <dd>the result of the invocation</dd>
+            <dd>the information of the stream</dd>
         </dl>
         
     </li>
@@ -56,7 +53,7 @@ Writes the content of the payload to the configured stream. If the stream does n
 </script>
 
 <script type="text/javascript">
-RED.nodes.registerType('stream-write',{
+RED.nodes.registerType('stream-describe',{
     category: 'Stream Manager',
     color:"#47d147",
     defaults: {
@@ -64,8 +61,8 @@ RED.nodes.registerType('stream-write',{
         name: { value: "" }
     },
     inputs:1,
-    outputs: 2,
-    outputLabels: ["done", "error"],
+    outputs: 3,
+    outputLabels: ["info", "error"],
     icon: "",
     align: "left",
     label: function() {

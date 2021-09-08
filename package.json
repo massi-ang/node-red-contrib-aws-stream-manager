@@ -36,7 +36,8 @@
         "nodes": {
             "stream-write": "lib/write.js",
             "stream-read": "lib/read.js",
-            "stream-config": "lib/config.js"
+            "stream-config": "lib/config.js",
+            "stream-describe": "lib/describe.js"
         }
     }
 }

@@ -18,38 +18,55 @@
 
 <script type="text/html" data-help-name="stream-read">
 <p>
-Invokes the SageMaker Edge Manager agent using the model configured and the <code>msg.payload</code> as input.
-Returns a byte array as output.
+Read data from the configured stream
 </p>
 <h3>Inputs</h3>
 <dl class="message-properties">
-    <dt>payload
-        <span class="property-type">buffer | TypedArray | string </span>
+    <dt>desiredStartSequenceNumber
+        <span class="property-type">number</span>
     </dt>
-    <dd> the data to be written to the stream </dd>
-    </dl>
+    <dd> the sequence number from where to start reading (default: 0)</dd>
+    <dt>minMessageCount
+        <span class="property-type">number</span>
+    </dt>
+    <dd> the minimum number of messages that need to be present for the call to return (default: 1) </dd>
+    <dt>maxMessageCount
+        <span class="property-type">number</span>
+    </dt>
+    <dd> the maximum number of messages that can be returned by the call return (default: 10) </dd>
+    <dt>readTimeoutMillis
+        <span class="property-type">number</span>
+    </dt>
+    <dd> the time the call waits before returning (default: 1000) </dd>
+</dl>
 <h3>Outputs</h3>
-<p>Done or Error</p>
 <ol class="node-ports">
-    <li>done
+    <li>messages
         <dl class="message-properties">
             <dt>payload <span class="property-type">object</span></dt>
-            <dd>the result of the invocation</dd>
+            <dd>1 or more messages read from the stream. The stream message payload can be accessed via <code>msg.payload.payload</code></dd>
         </dl>
-        
     </li>
-    <li>error
+</ol>
+<ol class="node-ports">
+    <li>lastSequence
         <dl class="message-properties">
-            <dt>payload <span class="property-type">Error</span></dt>
-            <dd>the error</dd>
+            <dt>maxSeq <span class="property-type">num</span></dt>
+            <dd>the last sequence read from the stream</dd>
         </dl>
-       
+        <dl class="message-properties">
+            <dt>eob <span class="property-type">bool</span></dt>
+            <dd><code>true</code>if there are no messages om the stream</dd>
+        </dl>
     </li>
-    
+</ol>
+<ol class="node-ports">
+    <li>error</li>
 </ol>
 
 <h3>Details</h3>
-
+This node reads from the configured stream. If hte stream does not exists an error will be thrown.
+You can control which messages are read from the stream by passing specific fields in the input message.
 <h3>References</h3>
 <ul>
 <li>Stream Manager</li>
