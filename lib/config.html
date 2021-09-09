@@ -94,10 +94,14 @@ RED.nodes.registerType('stream-config',{
     label: function() {
         return this.name || "stream-config"
     },
+    icon: "stream.svg",
+    labelStyle: function() {
+        return this.name?"node_label_italic":"";
+    },
     oneditprepare: function() {
 		$("#node-config-input-maxSize").typedInput({ default: "num", types: ["num"]});
         $("#node-config-input-streamSegmentSize").typedInput({ default: "num", types: ["num"]});
-        $("#node-config-input-timeToLiveMillis").typedInput({ default: "num", types: ["num"]});
+        $("#node-config-input-streamSegmentSize").typedInput({ default: "num", types: ["num"]});
         if ($('#node-config-input-exportKinesis').val()) {
             $('#kinesisAttr').children().addClass('visibleAttrs').removeClass('hiddenAttrs');
         } else {
